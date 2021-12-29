@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button
+        class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <br><br>
+      <ul class="list-group" *ngIf="!onlyOdd" [ngClass]="{even: !onlyOdd}">
+        <li
+          class="list-group-item"
+          *ngFor="let num of evenNum" basic-highlight>
+          {{num}}
+        </li>
+      </ul>
+      <ng-template [ngIf]="onlyOdd" >
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let num of oddNum" basic-highlight>
+            {{num}}
+          </li>
+        </ul>
+      </ng-template>
+      <div *appUnless="onlyOdd">
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let num of oddNum" basic-highlight>
+            {{num}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div [appBasicBetterHighlight]="'green'" hoverBackgroundColor="yellow"> Hey this is better directive usage </div>
+<div [ngSwitch]="luckyNum">
+  <div *ngSwitchCase="1">haha 1 hi h </div>
+  <div *ngSwitchCase="2">haha 2 hi h </div>
+  <div *ngSwitchCase="3">haha 3 hi h </div>
+  <div *ngSwitchCase="4">haha 4 hi h </div>
+  <div *ngSwitchCase="5">haha 5 hi h </div>
+</div>

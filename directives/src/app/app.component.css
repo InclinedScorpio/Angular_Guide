@@ -1,0 +1,13 @@
+.container {
+  margin-top: 30px;
+}
+
+.odd {
+  color: purple;
+  background-color: pink;
+}
+
+.even {
+  color:olivedrab;
+  background-color: mediumslateblue;
+}

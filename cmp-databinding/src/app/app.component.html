@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-cockpit (serverCreated)="addNewServer($event)" (bluePrintCreated)="addNewServer($event)"></app-cockpit>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-server [srvElement]="serverElements"><p #randomText>Wakka wakka</p></app-server>
+    </div>
+  </div>
+</div>

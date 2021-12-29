@@ -1,0 +1,25 @@
+<input type="text" [(ngModel)]="status" />
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let server of servers | filter:status:'status'"
+          [ngClass]="getStatusClasses(server)">
+            <span
+              class="badge">
+              {{ server.status }}
+            </span>
+            <strong>{{ server.name | slicer:6 }}</strong> | {{ server.instanceType | uppercase }} | {{ server.started | date: "shortDate" }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<h3>
+  Server status: {{asyncValue | async}}
+</h3>

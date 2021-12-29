@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              name="username"
+              formControlName="username">
+              <div class="help-block" *ngIf="signUpForm.get('userData.username').invalid && signUpForm.get('userData.username').touched"> 
+                <div *ngIf="signUpForm.get('userData.username').errors['userForbidden']">
+                  Can't use this name, sorry!
+                </div>  
+                <div *ngIf="signUpForm.get('userData.username').errors['required']">
+                  Username is invalid
+                </div>
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="text"
+              id="email"
+              class="form-control"
+              name="email"
+              formControlName="email">
+              <p class="help-block" *ngIf="signUpForm.get('userData.email').invalid && signUpForm.get('userData.email').touched">Email is invalid</p>
+          </div>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              [value]="gender"
+              formControlName="gender">{{ gender }}
+          </label>
+        </div>
+        <p class="help-block" *ngIf="signUpForm.invalid && signUpForm.touched">Please fill all data correctly</p>
+        <div class="form-group">
+          <div formArrayName="hobbies" *ngFor="let hobby of getHobbies(); let i=index;">
+            <input [formControlName]="i"/>
+          </div>
+          <button class="btn btn-warning" type="button"  (click)="onHobbyAdd()">Add Another Hobby</button>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
